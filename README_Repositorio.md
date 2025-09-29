@@ -1,4 +1,3 @@
-```markdown
 # Sistema de Autenticación con Laravel
 
 ## Descripción del Proyecto
