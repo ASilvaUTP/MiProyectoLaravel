@@ -191,6 +191,7 @@ El respaldo de la base de datos se encuentra en: `database/backup/mi_proyecto_la
 <img width="919" height="298" alt="imagen" src="https://github.com/user-attachments/assets/1d296b05-a9f6-474d-87cb-208c854c4be9" />
 
 [Base de datos]
+
 <img width="352" height="784" alt="imagen" src="https://github.com/user-attachments/assets/337199a1-c6be-4eb2-b339-0b77b7583b54" />
 
 ---
