@@ -1,0 +1,240 @@
+```markdown
+# Sistema de Autenticación con Laravel
+
+## Descripción del Proyecto
+Sistema completo de autenticación (login y registro) desarrollado con Laravel, implementando el patrón MVC y utilizando Bootstrap para el frontend.
+
+## 🎯 Objetivo del Laboratorio
+Implementar un sistema de autenticación completo en Laravel, comprendiendo su estructura MVC y el flujo de trabajo del framework.
+
+---
+
+## ⚙️ Prerrequisitos
+
+### Entorno de Desarrollo
+- **PHP** versión 8.0 o superior
+- **Composer** última versión estable
+- **Laravel Installer** o crear proyecto con `composer create-project`
+- **Paquete de servidor web local** (XAMPP, WampServer o Laragon)
+- **Servidor web**: Apache o Nginx
+- **Base de datos MySQL/MariaDB** funcionando
+- **Editor de código** (Visual Studio Code recomendado)
+- **Node.js** (para assets frontend)
+- **Sistema Operativo**: Windows/Linux/macOS
+
+---
+
+## 🚀 Instalación y Configuración
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/ASilvaUTP/mi-proyecto-laravel.git
+cd mi-proyecto-laravel
+```
+
+### 2. Instalar dependencias PHP
+```bash
+composer install
+```
+
+### 3. Configurar entorno
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 4. Configurar base de datos
+Editar archivo `.env`:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=login_lab
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Ejecutar migraciones
+```bash
+php artisan migrate
+```
+
+### 6. Instalar dependencias frontend
+```bash
+npm install
+npm run dev
+```
+
+### 7. Ejecutar servidor
+```bash
+php artisan serve
+```
+
+---
+
+## 🔐 Flujo de Comandos de Autenticación
+
+### Utilizando Laravel UI
+```bash
+# Instalar paquete de autenticación
+composer require laravel/ui
+
+# Generar scaffolding con Bootstrap y autenticación
+php artisan ui bootstrap --auth
+
+# Instalar y compilar assets
+npm install && npm run dev
+
+# Ejecutar migraciones
+php artisan migrate
+```
+
+---
+
+## 🏗️ Arquitectura MVC en Laravel
+
+### Estructura de Carpetas Principales
+
+```
+mi-proyecto-laravel/
+├── app/
+│   ├── Models/          # Modelos (Eloquent)
+│   ├── Http/
+│   │   └── Controllers/ # Controladores
+│   └── Providers/       # Proveedores de servicio
+├── resources/
+│   └── views/          # Vistas (Blade templates)
+├── routes/
+│   └── web.php         # Rutas de la aplicación
+├── database/
+│   └── migrations/     # Migraciones de BD
+└── config/             # Configuraciones
+```
+
+### Componentes MVC en Autenticación
+
+**Modelos (`app/Models/`)**
+- `User.php`: Modelo Eloquent para usuarios
+- Gestiona interacción con la tabla `users`
+
+**Controladores (`app/Http/Controllers/`)**
+- `AuthController.php`: Maneja lógica de autenticación
+- `LoginController.php`, `RegisterController.php`: Controladores específicos
+
+**Vistas (`resources/views/auth/`)**
+- `login.blade.php`: Formulario de login
+- `register.blade.php`: Formulario de registro
+- `home.blade.php`: Dashboard después del login
+
+**Rutas (`routes/web.php`)**
+- Define endpoints y asocia a controladores
+- Rutas automáticamente generadas por `laravel/ui`
+
+---
+
+## 📊 Migraciones de Base de Datos
+
+### Comandos Utilizados
+```bash
+# Crear y ejecutar migraciones
+php artisan migrate
+
+# Ver estado de migraciones
+php artisan migrate:status
+
+# Revertir migraciones
+php artisan migrate:rollback
+```
+
+### Tablas Creadas
+- **`users`**: Almacena información de usuarios
+- **`password_reset_tokens`**: Tokens para recuperación de contraseñas
+- **`sessions`**: Sesiones de usuarios activos
+- **`migrations`**: Control de migraciones ejecutadas
+
+---
+
+## 🗄️ Configuración de Base de Datos
+
+### Entorno de Desarrollo
+- **Servidor**: XAMPP (Apache + MySQL)
+- **Cliente**: phpMyAdmin
+- **Motor**: MySQL/MariaDB
+
+### Archivo `.env`
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mi_proyecto_laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Backup de Base de Datos
+El respaldo de la base de datos se encuentra en: `database/backup/mi_proyecto_laravel.sql`
+
+---
+
+## 📸 Resultados de la Aplicación
+
+### URLs Principales
+- **Página Principal**: `http://127.0.0.1:8000`
+- **Login**: `http://127.0.0.1:8000/login`
+- **Registro**: `http://127.0.0.1:8000/register`
+- **Dashboard**: `http://127.0.0.1:8000/home` (requiere autenticación)
+
+### Capturas de Pantalla
+[Inicio de sesión]
+
+[Página de Login]
+
+[Base de datos]
+
+---
+
+## ⚠️ Dificultades y Soluciones
+
+### Problema 1: Migración a SQLite
+**Error**: Dentro del archivo .env, la base de datos se estaba cargando en formato SQLite, lo cual hacía que tuviera problemas de compatibilidad y no se cargaba nada a PHPMyAdmin
+**Solución**: 
+Lo solucioné cambiando el valor de 'sqlite' a 'mysql'
+
+---
+
+## 📚 Referencias
+
+1. **Documentación Oficial de Laravel** - https://laravel.com/docs
+2. **Laravel UI Package** - https://github.com/laravel/ui
+3. **Stack Overflow** - Soluciones a errores comunes de migración
+4. **Documentación de Git** - https://git-scm.com/doc
+
+---
+
+## 👨‍💻 Información del Desarrollador
+
+**Este laboratorio ha sido desarrollado por el estudiante de la Universidad Tecnológica de Panamá:**
+
+- **Nombre**: Alejandro Silva
+- **Correo**: alejandro.silva@utp.ac.pa
+- **Curso**: Ingeniería Web
+- **Instructor del Laboratorio**: Ing. Irina Fong
+
+---
+
+## 📅 Fecha de Ejecución
+**Laboratorio realizado el**: 28 de septiembre de 2025
+
+**Fecha de entrega**: 29 de septiembre de 2025
+
+---
+
+<div align="center">
+
+**🎓 Universidad Tecnológica de Panamá**  
+**Facultad de Ingeniería Eléctrica**  
+**Campus Victor Levi Sasso**  
+**II Semestre 2025**
+
+</div>
+```
